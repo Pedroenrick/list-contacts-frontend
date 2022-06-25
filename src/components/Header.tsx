@@ -3,8 +3,8 @@ import { RiSearchLine, RiUserAddLine } from "react-icons/ri";
 export function Header() {
   return (
     <Flex
-      w="100%"
       as="header"
+      w="100%"
       maxWidth={1480}
       h="20"
       mx="auto"
@@ -13,7 +13,7 @@ export function Header() {
       align="center"
     >
       <Text fontSize="3xl" fontWeight="bold" letterSpacing="tight" w="64">
-        Agenda de Contatos
+        Contatos
       </Text>
 
       <Flex
@@ -38,29 +38,29 @@ export function Header() {
           _placeholder={{ color: "gray.400" }}
         />
         <Icon as={RiSearchLine} fontSize="20" />
+      </Flex>
 
-        <Flex align="center" ml="auto">
-          <HStack
-            spacing="4"
-            mx="8"
-            pr="8"
-            py="1"
-            color="gray.300"
-            borderRightWidth={1}
-            borderColor="gray.700"
-          >
-            <Icon as={RiUserAddLine} fontSize="20" ml="4" />
-          </HStack>
-          <Flex align="center">
-            <Box mr="4" textAlign="right">
-              <Text>Pedroenrick Felizardo</Text>
-              <Text color="gray.300" fontSize="small">
-                Pedro@email.com
-              </Text>
-            </Box>
+      <Flex align="center" ml="auto">
+        <HStack
+          spacing="4"
+          mx="8"
+          pr="8"
+          py="1"
+          color="gray.300"
+          borderRightWidth={1}
+          borderColor="gray.700"
+        >
+          <Icon as={RiUserAddLine} fontSize="20" ml="4" />
+        </HStack>
+        <Flex align="center">
+          <Box mr="4" textAlign="right">
+            <Text>Pedroenrick</Text>
+            <Text color="gray.300" fontSize="small">
+              Pedro@email.com
+            </Text>
+          </Box>
 
-            <Avatar size="md" name="Pedroenrick Felizardo" />
-          </Flex>
+          <Avatar size="md" name="Pedroenrick Felizardo" />
         </Flex>
       </Flex>
     </Flex>
