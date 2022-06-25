@@ -13,7 +13,7 @@ export function Header() {
       align="center"
     >
       <Text fontSize="3xl" fontWeight="bold" letterSpacing="tight" w="64">
-        Contatos
+        Agenda
       </Text>
 
       <Flex
@@ -22,7 +22,7 @@ export function Header() {
         py="4"
         px="8"
         ml="6"
-        maxWidth={400}
+        maxWidth={800}
         alignSelf="center"
         color="gray.200"
         position="relative"
@@ -45,13 +45,11 @@ export function Header() {
           spacing="4"
           mx="8"
           pr="8"
-          py="1"
+          py="5"
           color="gray.300"
           borderRightWidth={1}
           borderColor="gray.700"
-        >
-          <Icon as={RiUserAddLine} fontSize="20" ml="4" />
-        </HStack>
+        />
         <Flex align="center">
           <Box mr="4" textAlign="right">
             <Text>Pedroenrick</Text>
