@@ -7,11 +7,11 @@ import {
   SimpleGrid,
   HStack,
   Button,
-  Icon,
 } from "@chakra-ui/react";
-import { Header } from "../../components/Header";
-import { Sidebar } from "../../components/Sidebar";
+
 import { Input } from "../../components/Form/Input";
+import { Header } from "../../components/Header/index";
+import { Sidebar } from "../../components/Sidebar/index";
 
 export default function CreateContact() {
   return (

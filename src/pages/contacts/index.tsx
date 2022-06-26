@@ -9,7 +9,7 @@ export default function Contacts() {
   return (
     <Box p="8">
       <Header />
-      <Flex w="80%" my="6" mw={1480} mx="auto" px="6" >
+      <Flex w="80%" my="6" mw={1480} mx="auto" px="6">
         <Sidebar />
 
         <Box flex="1" borderRadius={8} bg="gray.800" p="8">
@@ -17,15 +17,6 @@ export default function Contacts() {
             <Heading size="lg" fontWeight="normal">
               Contatos
             </Heading>
-            <Button
-              as="a"
-              size="sm"
-              fontSize="small"
-              colorScheme="blue"
-              leftIcon={<Icon as={RiAddLine} />}
-            >
-              Novo Contato
-            </Button>
           </Flex>
           <SimpleGrid flex="1" gap="4" minChildWidth="380px" align="flex-start">
             <Card
