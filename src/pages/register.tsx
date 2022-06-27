@@ -1,38 +1,41 @@
 import { Flex, Button, Stack } from "@chakra-ui/react";
 import { api } from "../services/api";
-import { loginFormSchema } from "../validations/LoginFormSchema";
+import { registerFormSchema } from "../validations/RegisterFormSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
-
 import { Input } from "../components/Form/Input";
 
-type SignInFormData = {
+type RegisterFormData = {
+  name: string;
   email: string;
   password: string;
+  password_confirmation: string;
 };
 
-export default function SignIn() {
+export default function SignUp() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     formState,
   } = useForm({
-    resolver: yupResolver(loginFormSchema),
+    resolver: yupResolver(registerFormSchema),
   });
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async ({
+  const handleRegister: SubmitHandler<RegisterFormData> = async ({
+    name,
     email,
     password,
   }) => {
     const params = new URLSearchParams();
+    params.append("name", name);
     params.append("email", email);
     params.append("password", password);
 
     await api
-      .post("/login", params)
+      .post("/register", params)
       .then((res) => {
         console.log(res.data);
       })
@@ -51,9 +54,15 @@ export default function SignIn() {
         p="8"
         borderRadius={8}
         flexDirection="column"
-        onSubmit={handleSubmit(handleSignIn)}
+        onSubmit={handleSubmit(handleRegister)}
       >
         <Stack spacing="4">
+          <Input
+            name="name"
+            label="Nome"
+            error={errors.name}
+            {...register("name")}
+          />
           <Input
             name="email"
             type="email"
@@ -67,6 +76,14 @@ export default function SignIn() {
             error={errors.password}
             label="Senha"
             {...register("password")}
+          />
+
+          <Input
+            name="password_confirmation"
+            type="password"
+            error={errors.password_confirmation}
+            label="Confirme a Senha"
+            {...register("password_confirmation")}
           />
         </Stack>
 
