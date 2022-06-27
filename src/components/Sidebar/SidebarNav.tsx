@@ -7,7 +7,7 @@ export function SidebarNav() {
   return (
     <Stack spacing="12" align="flex-start">
       <Navsection title="MENU">
-        <NavLink icon={RiContactsLine}>Contacts</NavLink>
+        <NavLink icon={RiContactsLine}>Contatos</NavLink>
         <NavLink icon={RiUserAddLine}>Novo Contato</NavLink>
       </Navsection>
     </Stack>
