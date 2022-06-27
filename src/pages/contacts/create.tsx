@@ -35,6 +35,14 @@ export default function CreateContact() {
   const [zipcode, setZipcode] = useState("");
   const [groups, setGroups] = useState([]);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    formState,
+  } = useForm({ resolver: yupResolver(contactsFormSchema) });
+
+
   useEffect(() => {
     api
       .get("/categories")
@@ -43,8 +51,6 @@ export default function CreateContact() {
       })
       .catch((error) => {});
   }, []);
-
-  console.log(groups);
   // function searchAddress(zipcode) {
   //   if (zipcode.length == 8) {
   //     api.post("addresses/getAddress", zipcode).then((res) => {
@@ -53,12 +59,7 @@ export default function CreateContact() {
   //   }
   // }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    formState,
-  } = useForm({ resolver: yupResolver(contactsFormSchema) });
+ 
 
   const handleCreateContact: SubmitHandler<ContactFormData> = async ({
     name,
