@@ -1,17 +1,43 @@
-import { Box, Stack, Text, Link, Icon } from "@chakra-ui/react";
-import { RiContactsLine,RiUserAddLine } from "react-icons/ri";
-import { NavLink } from "./NavLink";
-import { Navsection } from "./NavSection";
+import {
+  Box,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  useBreakpointValue,
+} from "@chakra-ui/react";
+import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
+
+import { SidebarNav } from "./SidebarNav";
 
 export function Sidebar() {
+  const { isOpen, onClose } = useSidebarDrawer();
+  const isDrawerSidebar = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
+  if (isDrawerSidebar) {
+    return (
+      <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
+        <DrawerOverlay>
+          <DrawerContent bg="gray.800" p="4">
+            <DrawerCloseButton mt="6" />
+            <DrawerHeader>Navegação</DrawerHeader>
+            <DrawerBody>
+              <SidebarNav />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    );
+  }
+
   return (
     <Box as="aside" w="64" mr="8">
-      <Stack spacing="12" align="flex-start">
-        <Navsection title="MENU">
-            <NavLink icon={RiContactsLine}>Contacts</NavLink>
-            <NavLink icon={RiUserAddLine}>Novo Contato</NavLink>
-        </Navsection>
-      </Stack>
+      <SidebarNav />
     </Box>
   );
 }

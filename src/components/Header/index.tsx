@@ -1,13 +1,23 @@
-import { Flex, HStack, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Flex,
+  HStack,
+  useBreakpointValue,
+  IconButton,
+  Icon,
+} from "@chakra-ui/react";
+import { useSidebarDrawer } from "../../contexts/SidebarDrawerContext";
+import { RiMenuLine } from "react-icons/ri";
 import { Logo } from "./Logo";
 import { Profile } from "./Profile";
 import { Search } from "./Search";
 
 export function Header() {
+  const { onOpen } = useSidebarDrawer();
+
   const isDesktop = useBreakpointValue({
     base: false,
-    lg:true
-  })
+    lg: true,
+  });
   return (
     <Flex
       as="header"
@@ -19,6 +29,16 @@ export function Header() {
       px="6"
       align="center"
     >
+      {!isDesktop && (
+        <IconButton
+          icon={<Icon as={RiMenuLine} />}
+          fontSize="24"
+          variant="unstyled"
+          onClick={onOpen}
+          aria-label="Open Navigation"
+          mr="2"
+        />
+      )}
       <Logo />
       {isDesktop && <Search />}
 
@@ -32,7 +52,11 @@ export function Header() {
           borderRightWidth={1}
           borderColor="gray.700"
         />
-        <Profile showProfileData={isDesktop} name="Pedroenrick Felizardo Penna" email="pedro@email.com" />
+        <Profile
+          showProfileData={isDesktop}
+          name="Pedroenrick Felizardo Penna"
+          email="pedro@email.com"
+        />
       </Flex>
     </Flex>
   );
