@@ -10,8 +10,12 @@ import { RiMenuLine } from "react-icons/ri";
 import { Logo } from "./Logo";
 import { Profile } from "./Profile";
 import { Search } from "./Search";
+import { useContext } from "react";
+import { AuthContext } from "./../../contexts/AuthContext";
 
 export function Header() {
+  const { user } = useContext(AuthContext);
+
   const { onOpen } = useSidebarDrawer();
 
   const isDesktop = useBreakpointValue({
@@ -54,8 +58,8 @@ export function Header() {
         />
         <Profile
           showProfileData={isDesktop}
-          name="Pedroenrick Felizardo Penna"
-          email="pedro@email.com"
+          name={user?.name}
+          email={user?.email}
         />
       </Flex>
     </Flex>

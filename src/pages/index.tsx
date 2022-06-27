@@ -1,5 +1,4 @@
 import { Flex, Button, Stack } from "@chakra-ui/react";
-import { api } from "../services/api";
 import { loginFormSchema } from "../validations/LoginFormSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -7,6 +6,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 
 
 import { Input } from "../components/Form/Input";
+import { useContext } from 'react';
+import { AuthContext } from "../contexts/AuthContext";
 
 type SignInFormData = {
   email: string;
@@ -14,6 +15,9 @@ type SignInFormData = {
 };
 
 export default function SignIn() {
+
+  const {singIn} = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -26,20 +30,7 @@ export default function SignIn() {
   const handleSignIn: SubmitHandler<SignInFormData> = async ({
     email,
     password,
-  }) => {
-    const params = new URLSearchParams();
-    params.append("email", email);
-    params.append("password", password);
-
-    await api
-      .post("/login", params)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((error) => {
-        alert(error);
-      });
-  };
+  }) => singIn({email, password});
 
   return (
     <Flex w="100vw" h="100vh" align="center" justify="center">
