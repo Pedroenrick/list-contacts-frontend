@@ -2,14 +2,10 @@ import { Flex, Box, SimpleGrid, useBreakpointValue } from "@chakra-ui/react";
 
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
-import { Card } from "../../components/Card";
+import { Card } from './../../components/Card/index';
+
 
 export default function Contacts() {
-  const isDesktop = useBreakpointValue({
-    base: false,
-    lg: true,
-  });
-
   return (
     <Box>
       <Header />
